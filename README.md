@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SantaChains - 川端康成风格的个人博客
 
-## Getting Started
+一个充满日本文学美学的个人博客，以川端康成的雪国为灵感，融合了现代Web技术与传统东方美学。
 
-First, run the development server:
+## ✨ 特色功能
+
+### 🌸 视觉美学
+- **川端康成风格**：整体色调采用樱花粉与雾蓝色的渐变，营造雪国的朦胧美感
+- **动态樱花飘落**：实时生成的樱花花瓣动画，营造诗意的氛围
+- **雾气层效果**：多层雾气浮动，增加空间的深度感
+- **文字渐变**：使用CSS渐变动画，让文字如雪花般闪烁
+
+### 🎭 交互体验
+- **悬停卡片**：每个语录都有精美的悬停效果，展现更多文学细节
+- **模糊玻璃效果**：使用backdrop-filter实现现代毛玻璃质感
+- **响应式设计**：完美适配桌面、平板和移动设备
+
+### 📚 文学内容
+- **川端康成风格语录**：精选体现日本文学美学的原创文案
+- **分类展示**：按作品类型分类展示，如雪国、古都、千纸鹤等
+- **时间戳记**：每条语录都有时间标记，记录创作瞬间
+
+## 🛠️ 技术栈
+
+- **Next.js 15.4.4** - React框架，支持App Router
+- **TypeScript** - 类型安全的JavaScript
+- **Tailwind CSS** - 实用优先的CSS框架
+- **shadcn/ui** - 精美的React组件库
+- **Framer Motion** - 流畅的动画效果
+- **CSS动画** - 自定义樱花飘落、雾气浮动等效果
+
+## 🎨 设计哲学
+
+> "美在于发现，在于邂逅，是机缘。" - 川端康成
+
+本项目试图通过数字媒介，捕捉川端康成笔下那种稍纵即逝的美。每一个像素、每一行代码，都是对"物哀"美学的现代诠释。
+
+### 色彩语言
+- **樱花粉** (#F8BBD9) - 代表生命的脆弱与美丽
+- **雾蓝色** (#B8C5D6) - 象征雪国的宁静与深远
+- **宣纸白** (#FEFEFE) - 承载文字的纯净背景
+
+### 动效理念
+- **樱花飘落**：象征时间的流逝与生命的短暂
+- **雾气浮动**：表现现实的朦胧与记忆的模糊
+- **文字闪烁**：如同雪花在月光下的反射
+
+## 🚀 快速开始
 
 ```bash
+# 克隆项目
+git clone [your-repo-url]
+
+# 进入项目目录
+cd santachains-blog
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 http://localhost:3000 查看效果。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 响应式展示
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **桌面端**：三列网格布局，充分展示内容
+- **平板端**：双列布局，保持阅读体验
+- **移动端**：单列布局，优化触摸交互
 
-## Learn More
+## 🎯 未来计划
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] 添加文章详情页
+- [ ] 实现搜索功能
+- [ ] 集成评论系统
+- [ ] 添加多语言支持
+- [ ] 实现暗黑模式
+- [ ] 添加音乐播放器（日本传统音乐）
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 创作灵感
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+每一行代码，每一像素的设计，都试图回答一个问题：
+> 如果川端康成生活在数字时代，他会如何构建自己的数字花园？
 
-## Deploy on Vercel
+这个项目就是那个答案的雏形。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*在雪国的寂静中，用文字捕捉那些稍纵即逝的美丽瞬间。*
+
+**作者**: SantaChains  
+**创建时间**: 2024年12月  
+**许可证**: MIT

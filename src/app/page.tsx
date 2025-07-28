@@ -1,103 +1,180 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Separator } from '@/components/ui/separator';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+
+interface Quote {
+  id: number;
+  text: string;
+  category: string;
+  timestamp: string;
+}
+
+export default function SantaChainsHomepage() {
+  const [quotes] = useState<Quote[]>([
+    {
+      id: 1,
+      text: "雪国的夜，像被月光浸透的宣纸，每一笔都是未完成的思念。",
+      category: "雪国",
+      timestamp: "2024-12-01"
+    },
+    {
+      id: 2,
+      text: "她的睫毛上沾着晨露，像是昨夜星辰遗落的碎片，在黎明前微微颤动。",
+      category: "古都",
+      timestamp: "2024-12-02"
+    },
+    {
+      id: 3,
+      text: "温泉的雾气升腾，模糊了现实的边界，仿佛连时间都在这氤氲中溶解。",
+      category: "千纸鹤",
+      timestamp: "2024-12-03"
+    },
+    {
+      id: 4,
+      text: "樱花飘落的轨迹，是春天写给大地的情书，每一瓣都是无法投递的温柔。",
+      category: "山音",
+      timestamp: "2024-12-04"
+    },
+    {
+      id: 5,
+      text: "茶室的纸门透进微光，像是从另一个世界渗入的记忆，带着榻榻米的温度。",
+      category: "睡美人",
+      timestamp: "2024-12-05"
+    },
+    {
+      id: 6,
+      text: "她的和服下摆扫过木质走廊，发出细微的沙沙声，像是时间在低声诉说。",
+      category: "湖",
+      timestamp: "2024-12-06"
+    }
+  ]);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    
+    // 创建樱花飘落效果
+    const createSakuraPetal = () => {
+      const petal = document.createElement('div');
+      petal.className = 'sakura-petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      petal.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 5000);
+    };
+
+    const interval = setInterval(createSakuraPetal, 300);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* 雾气层 */}
+      <div className="mist-layer" />
+      <div className="mist-layer" style={{ animationDelay: '2s' }} />
+      <div className="mist-layer" style={{ animationDelay: '4s' }} />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* 主内容区域 */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* 头部区域 */}
+        <header className="text-center mb-16">
+          <Avatar className="w-32 h-32 mx-auto mb-6 ring-4 ring-primary/20">
+            <AvatarImage src="/api/placeholder/128/128" alt="SantaChains" />
+            <AvatarFallback className="text-4xl bg-gradient-to-br from-pink-200 to-blue-200">
+              聖
+            </AvatarFallback>
+          </Avatar>
+          
+          <h1 className="text-5xl font-bold mb-4 text-gradient">
+            SantaChains
+          </h1>
+          
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            在川端康成的雪国里，每一粒雪晶都是未完成的诗篇，
+            而我的文字，不过是这些雪花在时光中的倒影。
+          </p>
+        </header>
+
+        <Separator className="my-12 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+        {/* 语录网格 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {quotes.map((quote) => (
+            <HoverCard key={quote.id}>
+              <HoverCardTrigger asChild>
+                <Card className="group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-0 bg-card/80 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-gradient">
+                      {quote.category}
+                    </CardTitle>
+                    <CardDescription className="text-xs text-muted-foreground">
+                      {quote.timestamp}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm leading-relaxed text-foreground/80 group-hover:text-foreground transition-colors">
+                      {quote.text}
+                    </p>
+                  </CardContent>
+                </Card>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80 bg-card/90 backdrop-blur-md border-0">
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    这个瞬间，像是从川端康成的笔下流淌出来的
+                  </p>
+                  <Separator className="bg-primary/20" />
+                  <p className="text-xs text-foreground/60">
+                    &ldquo;美在于发现，在于邂逅，是机缘。&rdquo;
+                  </p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* 底部区域 */}
+        <footer className="text-center mt-20">
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              这些文字，不过是雪国中的一场梦
+            </p>
+            <div className="flex justify-center space-x-4">
+              <Button 
+                variant="ghost" 
+                className="text-xs hover:bg-primary/10 hover:text-primary transition-colors"
+              >
+                更多雪国记忆
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="text-xs hover:bg-secondary/10 hover:text-secondary transition-colors"
+              >
+                时间之河
+              </Button>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      {/* 动态背景元素 */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
     </div>
   );
 }
