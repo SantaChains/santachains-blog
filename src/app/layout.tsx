@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Serif_JP } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,11 +12,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const notoSerifJP = Noto_Serif_JP({
+// 使用系统字体优雅替换Noto Serif JP，保持变量名不变
+const notoSerifJP = {
   variable: "--font-noto-serif-jp",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+  // 通过CSS变量在全局样式中定义系统字体回退
+};
 
 export const metadata: Metadata = {
   title: "SantaChains - 川端康成风格的个人博客",
@@ -39,6 +39,7 @@ export default function RootLayout({
     <html lang="zh">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifJP.variable} antialiased`}
+        suppressHydrationWarning
       >
         {children}
       </body>

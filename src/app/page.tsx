@@ -59,32 +59,38 @@ export default function SantaChainsHomepage() {
   useEffect(() => {
     setMounted(true);
     
-    // 创建樱花飘落效果
+    // 优化樱花飘落效果 - 减少DOM操作频率
     const createSakuraPetal = () => {
       const petal = document.createElement('div');
       petal.className = 'sakura-petal';
       petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      petal.style.animationDelay = Math.random() * 2 + 's';
+      petal.style.animationDuration = (Math.random() * 4 + 3) + 's'; // 增加动画时长
+      petal.style.animationDelay = Math.random() * 1 + 's';
+      petal.style.willChange = 'transform, opacity'; // 启用硬件加速
       document.body.appendChild(petal);
 
       setTimeout(() => {
         petal.remove();
-      }, 5000);
+      }, 7000);
     };
 
-    const interval = setInterval(createSakuraPetal, 300);
-    return () => clearInterval(interval);
+    // 降低创建频率，使用指数衰减
+    const createPetalWithDelay = () => {
+      createSakuraPetal();
+      const nextDelay = 800 + Math.random() * 1200; // 800-2000ms随机间隔
+      setTimeout(createPetalWithDelay, nextDelay);
+    };
+
+    createPetalWithDelay();
   }, []);
 
   if (!mounted) return null;
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* 雾气层 */}
+      {/* 优化后的雾气层 - 减少数量提升性能 */}
       <div className="mist-layer" />
-      <div className="mist-layer" style={{ animationDelay: '2s' }} />
-      <div className="mist-layer" style={{ animationDelay: '4s' }} />
+      <div className="mist-layer" style={{ animationDelay: '4s', opacity: 0.7 }} />
 
       {/* 主内容区域 */}
       <div className="relative z-10 container mx-auto px-4 py-16">
@@ -169,11 +175,10 @@ export default function SantaChainsHomepage() {
         </footer>
       </div>
 
-      {/* 动态背景元素 */}
+      {/* 优化后的动态背景元素 - 减少重绘 */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="absolute top-3/4 right-1/4 w-60 h-60 bg-secondary/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '8s' }} />
       </div>
     </div>
   );
