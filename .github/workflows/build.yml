@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
@@ -7,8 +7,10 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -29,5 +31,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Verify build
-        run: echo "Build completed successfully"
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
