@@ -29,6 +29,41 @@
 - **Framer Motion** - 流畅的动画效果
 - **CSS动画** - 自定义樱花飘落、雾气浮动等效果
 
+![1775394931801](image/README/1775394931801.png)
+
+![1775394814606](image/README/1775394814606.png)
+
+## 🔤 字体配置
+
+本项目使用本地字体文件，按以下优先级加载：
+
+| 优先级 | 字体 | 用途 | 文件 |
+|--------|------|------|------|
+| 1 | **Arima** | 英文/数字显示 | `public/fonts/Arima.ttf` |
+| 2 | **霞鹜文楷 Mono** | 中文正文首选 | `public/fonts/LXGWWenKaiMono.ttf` |
+| 3 | **仓耳今楷** | 中文备选 | `public/fonts/CangErJinKai03.ttf` |
+| 4 | 系统字体 | 最终回退 | - |
+
+### 字体特点
+
+- **Arima**: 优雅的展示字体，适合标题和英文内容
+- **霞鹜文楷 Mono**: 开源中文字体，等宽设计，适合代码和正文阅读
+- **仓耳今楷**: 楷书风格，优雅古典，与川端康成文学气质相契合
+
+### 配置方式
+
+字体通过 `next/font/local` 在 [layout.tsx](src/app/layout.tsx) 中配置：
+
+```typescript
+import localFont from "next/font/local";
+
+const arima = localFont({
+  src: "../../public/fonts/Arima.ttf",
+  variable: "--font-arima",
+  display: "swap",
+});
+```
+
 ## 🎨 设计哲学
 
 > "美在于发现，在于邂逅，是机缘。" - 川端康成

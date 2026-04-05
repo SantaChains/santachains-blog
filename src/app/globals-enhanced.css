@@ -1,0 +1,426 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.99 0.02 330);
+  --foreground: oklch(0.35 0.12 280);
+  --card: oklch(1 0.01 330 / 0.6);
+  --card-foreground: oklch(0.25 0.15 280);
+  --popover: oklch(0.98 0.03 330 / 0.95);
+  --popover-foreground: oklch(0.35 0.12 280);
+  --primary: oklch(0.75 0.25 350);
+  --primary-foreground: oklch(0.98 0.01 330);
+  --secondary: oklch(0.85 0.15 220);
+  --secondary-foreground: oklch(0.25 0.15 220);
+  --muted: oklch(0.95 0.05 330 / 0.5);
+  --muted-foreground: oklch(0.55 0.1 280);
+  --accent: oklch(0.8 0.2 300);
+  --accent-foreground: oklch(0.98 0.01 330);
+  --destructive: oklch(0.65 0.25 25);
+  --border: oklch(0.85 0.1 330 / 0.3);
+  --input: oklch(0.9 0.08 330 / 0.4);
+  --ring: oklch(0.75 0.25 350 / 0.5);
+  --chart-1: oklch(0.75 0.25 350);
+  --chart-2: oklch(0.65 0.2 280);
+  --chart-3: oklch(0.55 0.15 220);
+  --chart-4: oklch(0.85 0.18 190);
+  --chart-5: oklch(0.7 0.22 320);
+  --sidebar: oklch(0.97 0.04 330);
+  --sidebar-foreground: oklch(0.35 0.12 280);
+  --sidebar-primary: oklch(0.75 0.25 350);
+  --sidebar-primary-foreground: oklch(0.98 0.01 330);
+  --sidebar-accent: oklch(0.85 0.15 220);
+  --sidebar-accent-foreground: oklch(0.25 0.15 220);
+  --sidebar-border: oklch(0.85 0.1 330 / 0.3);
+  --sidebar-ring: oklch(0.75 0.25 350 / 0.5);
+  /* 优雅的系统字体回退，保持川端康成风格美学 */
+  --font-noto-serif-jp: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+    "Helvetica Neue", Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", 
+    "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-geist-sans), var(--font-noto-serif-jp);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* 增强版背景渐变 - 使用transform而非background-position */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      135deg,
+      oklch(0.99 0.02 330) 0%,
+      oklch(0.97 0.05 310) 25%,
+      oklch(0.95 0.08 290) 50%,
+      oklch(0.93 0.12 270) 75%,
+      oklch(0.91 0.15 250) 100%
+    );
+    animation: gradientShift 25s ease-in-out infinite;
+    will-change: transform;
+    contain: layout style paint;
+    z-index: -1;
+  }
+}
+
+/* 背景渐变动画 - GPU加速 */
+@keyframes gradientShift {
+  0% { transform: translateX(-25%) translateY(-25%) scale(1.5); }
+  50% { transform: translateX(25%) translateY(25%) scale(1.5); }
+  100% { transform: translateX(-25%) translateY(-25%) scale(1.5); }
+}
+
+/* 樱花飘落动画 - 保留用于兼容性 */
+@keyframes sakuraFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 雾气浮动动画 - 增强版 */
+@keyframes mistFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-25px) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* 雾气层样式 - 恢复3层 */
+.mist-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 40%,
+    oklch(0.95 0.05 330 / 0.4) 0%,
+    oklch(0.9 0.1 280 / 0.2) 50%,
+    transparent 100%
+  );
+  animation: mistFloat 10s ease-in-out infinite;
+  will-change: transform, opacity;
+  contain: layout style paint;
+  pointer-events: none;
+}
+
+.mist-layer-1 {
+  animation-delay: 0s;
+  opacity: 0.6;
+}
+
+.mist-layer-2 {
+  animation-delay: 3s;
+  opacity: 0.5;
+  background: radial-gradient(
+    circle at 70% 60%,
+    oklch(0.93 0.08 300 / 0.35) 0%,
+    oklch(0.88 0.12 260 / 0.15) 50%,
+    transparent 100%
+  );
+}
+
+.mist-layer-3 {
+  animation-delay: 6s;
+  opacity: 0.4;
+  background: radial-gradient(
+    circle at 50% 30%,
+    oklch(0.96 0.06 320 / 0.3) 0%,
+    oklch(0.91 0.1 280 / 0.1) 50%,
+    transparent 100%
+  );
+}
+
+/* 增强版文字渐变 */
+.text-gradient-enhanced {
+  background: linear-gradient(
+    45deg,
+    oklch(0.75 0.25 350),
+    oklch(0.65 0.2 280),
+    oklch(0.85 0.18 190),
+    oklch(0.75 0.25 350)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 分隔线闪烁效果 */
+.separator-shimmer {
+  animation: separatorPulse 3s ease-in-out infinite;
+}
+
+@keyframes separatorPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* 头像光晕效果 */
+.avatar-glow {
+  animation: avatarPulse 4s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px oklch(0.75 0.25 350 / 0.3),
+                0 0 40px oklch(0.75 0.25 350 / 0.2),
+                0 0 60px oklch(0.75 0.25 350 / 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px oklch(0.75 0.25 350 / 0.5),
+                0 0 60px oklch(0.75 0.25 350 / 0.3),
+                0 0 90px oklch(0.75 0.25 350 / 0.2);
+  }
+}
+
+/* 卡片浮动动画 */
+.card-float {
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* 光晕球体动画 */
+.glow-orb {
+  animation: glowPulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.glow-orb-1 {
+  animation-delay: 0s;
+  animation-duration: 6s;
+}
+
+.glow-orb-2 {
+  animation-delay: 2s;
+  animation-duration: 8s;
+}
+
+.glow-orb-3 {
+  animation-delay: 4s;
+  animation-duration: 10s;
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* 悬浮卡片光晕 */
+.hover-card-glow {
+  animation: hoverCardGlow 3s ease-in-out infinite;
+}
+
+@keyframes hoverCardGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px oklch(0.75 0.25 350 / 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 40px oklch(0.75 0.25 350 / 0.2);
+  }
+}
+
+/* 按钮闪光效果 */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(1 0 0 / 0.2),
+    transparent
+  );
+  animation: btnShine 3s ease-in-out infinite;
+}
+
+@keyframes btnShine {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+/* 打字机效果 */
+.typewriter-effect {
+  overflow: hidden;
+  border-right: 2px solid oklch(0.75 0.25 350);
+  white-space: nowrap;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: oklch(0.75 0.25 350); }
+}
+
+/* 页脚淡入效果 */
+.footer-fade {
+  animation: footerFadeIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes footerFadeIn {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+/* 传统樱花花瓣样式 - 备用 */
+.sakura-petal {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: oklch(0.85 0.25 350 / 0.8);
+  border-radius: 50% 0 50% 0;
+  animation: sakuraFall linear infinite;
+  backdrop-filter: blur(1px);
+  will-change: transform, opacity;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .mist-layer {
+    animation-duration: 15s;
+  }
+  
+  .glow-orb {
+    opacity: 0.2;
+  }
+  
+  .typewriter-effect {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+  }
+}
+
+/* 减少动画偏好支持 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
