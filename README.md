@@ -84,7 +84,7 @@ const arima = localFont({
 
 ```bash
 # 克隆项目
-git clone [your-repo-url]
+git clone https://github.com/SantaChains/santachains-blog
 
 # 进入项目目录
 cd santachains-blog
@@ -125,5 +125,6 @@ npm run dev
 *在雪国的寂静中，用文字捕捉那些稍纵即逝的美丽瞬间。*
 
 **作者**: SantaChains  
-**创建时间**: 2024年12月  
+**创建时间**: 2025年12月
+**更新时间**: 2026年04月  
 **许可证**: MIT
