@@ -68,3 +68,29 @@ $RECYCLE.BIN/
 
 # Local development
 *.local
+
+# Deploy directory (generated during build)
+/deploy/
+
+# Lock files (optional - keep one package manager lock file)
+# Uncomment if you want to ignore package-lock.json
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Test output
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Storybook build output
+/storybook-static/
+
+# PWA generated files
+/public/
+
+# Local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

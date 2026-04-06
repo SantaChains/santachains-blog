@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
@@ -54,11 +54,7 @@ export default function SantaChainsHomepage() {
     }
   ]);
 
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-    
     // 优化樱花飘落效果 - 减少DOM操作频率
     const createSakuraPetal = () => {
       const petal = document.createElement('div');
@@ -84,8 +80,6 @@ export default function SantaChainsHomepage() {
     createPetalWithDelay();
   }, []);
 
-  if (!mounted) return null;
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* 优化后的雾气层 - 减少数量提升性能 */}
@@ -97,7 +91,6 @@ export default function SantaChainsHomepage() {
         {/* 头部区域 */}
         <header className="text-center mb-16">
           <Avatar className="w-32 h-32 mx-auto mb-6 ring-4 ring-primary/20">
-            <AvatarImage src="/api/placeholder/128/128" alt="SantaChains" />
             <AvatarFallback className="text-4xl bg-gradient-to-br from-pink-200 to-blue-200">
               聖
             </AvatarFallback>
