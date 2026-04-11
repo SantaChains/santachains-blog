@@ -36,8 +36,8 @@ jobs:
 
       - name: Prepare deployment directory
         run: |
-          mkdir -p deploy/santachains-blog
-          cp -r out/* deploy/santachains-blog/
+          mkdir -p deploy
+          cp -r out/* deploy/
           touch deploy/.nojekyll
 
       - name: Deploy to GitHub Pages
